@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:vm="clr-namespace:PasswordManager.ViewModel"
 		xmlns:vw="clr-namespace:PasswordManager.View"
-        Title="MainWindow" Height="550" Width="760">
+        Title="MainWindow" Height="550" Width="950">
 
 	<Window.Resources>
 		<DataTemplate DataType="{x:Type vm:PasswordListViewModel }">
@@ -26,7 +26,7 @@
 		  SelectedIndex="0">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
-					<TextBlock Text="{Binding Name}" Padding="10"/>
+					<TextBlock Text="{Binding SettingName}" Padding="10"/>
 				</DataTemplate>
 			</ListBox.ItemTemplate>
 		</ListBox>

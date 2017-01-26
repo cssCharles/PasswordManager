@@ -8,6 +8,6 @@ namespace PasswordManager.ViewModel
 {
 	public abstract class SettingsViewModelBase : ViewModelBase
 	{
-		public abstract string Name { get; }
+		public abstract string SettingName { get; }
 	}
 }

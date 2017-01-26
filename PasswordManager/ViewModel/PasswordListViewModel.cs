@@ -13,7 +13,7 @@ namespace PasswordManager.ViewModel
 {
 	public class PasswordListViewModel : SettingsViewModelBase
 	{
-		public override string Name
+		public override string SettingName
 		{
 			get { return "ListPassword"; }
 		}

@@ -60,8 +60,8 @@ namespace PasswordManager.DataAccess
 				cmd.Parameters.AddWithValue("@Name", password.Name);
 				cmd.Parameters.AddWithValue("@User", password.UserId);
 				cmd.Parameters.AddWithValue("@PW", password.UserPassword);
-				cmd.Parameters.AddWithValue("@Memo", password.Memo);
-				cmd.Parameters.AddWithValue("@Url", password.Url);
+				cmd.Parameters.AddWithValue("@Memo", password.Memo + "");
+				cmd.Parameters.AddWithValue("@Url", password.Url + "");
 				try
 				{
 					con.Open();
