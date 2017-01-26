@@ -8,11 +8,7 @@ using System.Threading.Tasks;
 
 namespace PasswordManager.Model
 {
-	public enum EntryType
-	{
-		Personal,
-		Business
-	}	
+
 
 	public class Password : ViewModelBase
 	{

@@ -6,9 +6,9 @@ namespace PasswordManager.ViewModel
 	public class MainWindowViewModel : ViewModelBase
 	{
 
-		private readonly ObservableCollection<SettingsViewModelBase> settings;
 		private readonly PasswordRepository _passwordRepository;
 
+		private readonly ObservableCollection<SettingsViewModelBase> settings;
 		public ObservableCollection<SettingsViewModelBase> Settings
 		{
 			get { return this.settings; }

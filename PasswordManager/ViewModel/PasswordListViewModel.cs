@@ -15,7 +15,7 @@ namespace PasswordManager.ViewModel
 	{
 		public override string SettingName
 		{
-			get { return "ListPassword"; }
+			get { return "Passwords"; }
 		}
 		readonly PasswordRepository _passwordRepository;
 
@@ -96,7 +96,7 @@ namespace PasswordManager.ViewModel
 
 
 			var msgBox = new WPFMessageBoxService();
-			if (msgBox.ShowMessage("Really Fucking Remove", "Confirm Removal"))
+			if (msgBox.ShowMessage("Are you sure you want to remove this entry?", "Confirm Removal"))
 
 			{
 				//MessageBoxResult result =
