@@ -11,8 +11,12 @@ using System.Windows;
 
 namespace PasswordManager.ViewModel
 {
-	public class PasswordListViewModel : ViewModelBase
+	public class PasswordListViewModel : SettingsViewModelBase
 	{
+		public override string Name
+		{
+			get { return "ListPassword"; }
+		}
 		readonly PasswordRepository _passwordRepository;
 
 		//Holds the selected Password Object from the listview 
