@@ -7,19 +7,29 @@ using System.Windows.Input;
 using System.Windows;
 using PasswordManager.Model;
 using PasswordManager.DataAccess;
+using System.Collections.ObjectModel;
 
 namespace PasswordManager.ViewModel
 {
+	//TODO: Figure out how to default entrytype so that Command doesn't enable without choosing 
 	class CreatePasswordViewModel : SettingsViewModelBase
 	{
 		public override string SettingName
 		{
-			get { return "CreateNew"; }
+			get { return "Store Password"; }
 		}
 
+		//public Password SelectedEnum { get; set; }
 
-		//public Password password = new Password();
+		public IEnumerable<string> EntryTypes { get; set; }
 
+		public CreatePasswordViewModel()
+		{
+			var enum_names = Enum.GetNames(typeof(EntryType));
+			EntryTypes = enum_names;
+		}
+
+		#region Local Properties
 		private string _name;
 		public string Name
 		{
@@ -100,8 +110,9 @@ namespace PasswordManager.ViewModel
 				OnPropertyChanged("Url");
 			}
 		}
+		#endregion
 
-
+		#region SavePassword Command
 		RelayCommand _savePassword;
 		public ICommand SavePassword
 		{
@@ -122,7 +133,7 @@ namespace PasswordManager.ViewModel
 			var password = new Password();
 
 			password.Name = this.Name;
-			password.EntryType = Model.EntryType.Business;
+			password.EntryType = this.EntryType;
 			password.UserId = this.UserId;
 			password.UserPassword = this.UserPassword;
 			password.Memo = this.Memo;
@@ -136,6 +147,7 @@ namespace PasswordManager.ViewModel
 			this.UserPassword = string.Empty;
 			this.Memo = string.Empty;
 			this.Url = string.Empty;
+			//this.EntryType = null;
 		}
 
 		public bool SavePasswordCanExecute
@@ -146,8 +158,11 @@ namespace PasswordManager.ViewModel
 				{
 					return false;
 				}
+
 				return true;
 			}
 		}
+		#endregion
 	}
+
 }
