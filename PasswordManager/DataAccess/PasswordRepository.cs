@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using PasswordManager.Model;
 using System.Data.OleDb;
+using System.Collections.ObjectModel;
 
 namespace PasswordManager.DataAccess
 {
 	public class PasswordRepository
 	{
 		string sql = "SELECT * FROM Passwords ORDER BY EntryType";
-		readonly List<Password> _passwords;
-
+		//readonly List<Password> _passwords;
+        readonly ObservableCollection<Password> _passwords;
 		public PasswordRepository()
 		{
 			if (_passwords == null)
 			{
-				_passwords = new List<Password>();
-			}
+                //_passwords = new List<Password>();
+                _passwords = new ObservableCollection<Password>();
+            }
 			using (var con = new OleDbConnection(Common.conString))
 			using (var cmd = new OleDbCommand(sql, con))
 			{
@@ -41,9 +43,9 @@ namespace PasswordManager.DataAccess
 			}
 		}
 
-		public List<Password> GetPasswords()
+		public ObservableCollection<Password> GetPasswords()
 		{
-			return new List<Password>(_passwords);
+			return new ObservableCollection<Password>(_passwords);
 		}
 
 		public void SavePasswordEntry(Password password)
@@ -76,6 +78,8 @@ namespace PasswordManager.DataAccess
 					con.Close();
 				}
 			}
+			_passwords.Add(password);
+			//GetPasswords();
 
 
 		}

@@ -20,7 +20,8 @@
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 
-		<ListBox x:Name="ListBoxMenu"
+        <!--ListBoxMenu is named for use in the ElementName below and not for code-behind-->
+        <ListBox x:Name="ListBoxMenu"
 		  Grid.Column ="0" Margin="4"
 		  ItemsSource="{Binding Settings}"
 		  SelectedIndex="0">

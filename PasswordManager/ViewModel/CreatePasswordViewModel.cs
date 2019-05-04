@@ -7,11 +7,11 @@ using System.Windows.Input;
 using System.Windows;
 using PasswordManager.Model;
 using PasswordManager.DataAccess;
+
 using System.Collections.ObjectModel;
 
 namespace PasswordManager.ViewModel
 {
-	//TODO: Figure out how to default entrytype so that Command doesn't enable without choosing 
 	class CreatePasswordViewModel : SettingsViewModelBase
 	{
 		public override string SettingName
@@ -141,13 +141,22 @@ namespace PasswordManager.ViewModel
 
 			var repository = new PasswordRepository();
 			repository.SavePasswordEntry(password);
+			repository.GetPasswords();
+			
+			
+			//add the new password to the observable collection 
+			//so that it updates and is visible when we return
+			//to the password list.
+			PasswordListViewModel.AllPasswords.Add(password);
+
+
 
 			this.Name = string.Empty;
 			this.UserId = string.Empty;
 			this.UserPassword = string.Empty;
 			this.Memo = string.Empty;
 			this.Url = string.Empty;
-			//this.EntryType = null;
+
 		}
 
 		public bool SavePasswordCanExecute

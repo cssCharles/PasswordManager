@@ -20,7 +20,7 @@ namespace PasswordManager.Model
 			get { return name; }
 			set { 
 				name = value;
-				//OnPropertyChanged("Name");
+				OnPropertyChanged("Name");
 			}
 		}		
 		public string	 UserId { get; set; }

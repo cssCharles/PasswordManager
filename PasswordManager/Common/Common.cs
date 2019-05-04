@@ -15,7 +15,7 @@ namespace PasswordManager
 
 	public static class Common
 	{
-		public static string conString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=S:\Charlie\PasswordsDB.accdb";
+		public static string conString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=S:\!!DriveD Backup\Charlie\PasswordsDB.accdb";
 
 	}
 }

@@ -23,7 +23,7 @@ namespace PasswordManager.ViewModel
 		//used in the ListViews XAML for SelectedItem Binding
 		public Password SelectedPassword { get; set; }
 
-		public ObservableCollection<Model.Password> AllPasswords
+		public static ObservableCollection<Model.Password> AllPasswords
 		{
 			get;
 			private set;
@@ -37,12 +37,12 @@ namespace PasswordManager.ViewModel
 				throw new ArgumentNullException("passwordRepository");
 			}
 			_passwordRepository = passwordRepository;
-			this.AllPasswords = new ObservableCollection<Model.Password>(_passwordRepository.GetPasswords());
+			/*this.*/AllPasswords = new ObservableCollection<Model.Password>(_passwordRepository.GetPasswords());
 		}
 
 		protected override void OnDispose()
 		{
-			this.AllPasswords.Clear();
+			/*this.*/AllPasswords.Clear();
 		}
 
 		#region ICommand Implementation For DisplayPassword Button
@@ -63,7 +63,8 @@ namespace PasswordManager.ViewModel
 
 		void DisplayCurrentPasswordExecute()
 		{
-			//Here we need to look at decrypting passwords
+			
+			//TODO: Here we need to look at decrypting passwords
 			MessageBox.Show(SelectedPassword.Url);
 			SelectedPassword = null;
 		}
@@ -92,25 +93,12 @@ namespace PasswordManager.ViewModel
 		{
 			if (item == null) return;
 
-			
-
-
 			var msgBox = new WPFMessageBoxService();
 			if (msgBox.ShowMessage("Are you sure you want to remove this entry?", "Confirm Removal"))
-
 			{
-				//MessageBoxResult result =
-				//	MessageBox.Show("Confirm deletion of this item",
-				//	"Delete Confirmation",
-				//	MessageBoxButton.YesNo,
-				//	MessageBoxImage.Question);
-
-				//if (result == MessageBoxResult.No) return;
-
 				var db = new PasswordRepository();
 				db.DeletePassword(item.Id);
 				AllPasswords.Remove(item);
-
 			}
 		}
 		#endregion
